@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hamviro - Professional Digital Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PRO PRODUCTION RESET SYSTEM (RIGID LAYOUT LOCK) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: #f5f7fa;
+            color: #1e293b;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .top-bar {
+            background-color: #ffffff;
+            font-size: 12px;
+            color: #64748b;
+            padding: 10px 6%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e2e8f0;
+            font-weight: 500;
+        }
+        .top-bar a { text-decoration: none; color: #64748b; margin-right: 22px; transition: color 0.2s; }
+        .top-bar a:hover { color: #ff4e00; }
+
+        header {
+            background-color: #ffffff;
+            padding: 14px 6%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 15px rgba(15, 23, 42, 0.04);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff4e00;
+            letter-spacing: -1.2px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 680px;
+            height: 44px;
+            display: flex;
+            margin: 0 auto;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 0 16px;
+            border: 1.5px solid #e2e8f0;
+            background-color: #f8fafc;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0f172a;
+            transition: all 0.2s ease;
+        }
+        .search-container input:focus {
+            background-color: #ffffff;
+            border-color: #ff4e00;
+            box-shadow: 0 0 0 4px rgba(255, 78, 0, 0.08);
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #ff6a00 0%, #ff4e00 100%);
+            color: #ffffff;
+            border: none;
+            width: 60px;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            align-items: center;
+        }
+        .header-icons div { cursor: pointer; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+        .header-icons div:hover { color: #ff4e00; }
+        .header-icons i { font-size: 19px; color: #475569; }
+
+        .hero-section {
+            display: flex;
+            gap: 24px;
+            padding: 24px 6%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .sidebar-categories {
+            width: 260px;
+            background-color: #ffffff;
+            border-radius: 14px;
+            padding: 12px 0;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+        .sidebar-categories div {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .sidebar-categories div:hover, .sidebar-categories div.active {
+            background-color: #fff4ee;
+            color: #ff4e00;
+            font-weight: 600;
+        }
+
+        .main-banner {
+            flex: 1;
+            background: linear-gradient(135deg, #ff6008 0%, #e63e00 100%);
+            border-radius: 20px;
+            color: #ffffff;
+            padding: 44px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(255, 78, 0, 0.12);
+        }
+
+        .banner-text { max-width: 55%; }
+        .banner-text span { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85; font-weight: 700; }
+        .banner-text h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 40px; font-weight: 800; margin: 10px 0 18px 0; line-height: 1.2; }
+        
+        .shop-now-btn {
+            background-color: #ffffff;
+            color: #ff4e00;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .banner-img img {
+            max-width: 100%;
+            height: 220px;
+            object-fit: contain;
+        }
+
+        .mobile-categories-scroll { display: none; }
+
+        .flash-sale-section {
+            padding: 0 6% 60px 6%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .flash-sale-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .timer {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 0 0 12px 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 78, 0, 0.25);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            position: relative;
+            background-color: #f8fafc;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0 12px 10px 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 36px;
+        }
+
+        .price-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: auto 12px 0 12px;
+        }
+
+        .product-price { color: #ff4e00; font-weight: 700; font-size: 17px; }
+        .old-price-row { display: flex; align-items: center; gap: 8px; }
+        .old-price { font-size: 11px; color: #94a3b8; text-decoration: line-through; }
+        .discount-tag { font-size: 11px; color: #ef4444; font-weight: 700; background: #fef2f2; padding: 2px 6px; border-radius: 4px; }
+
+        /* --- MODAL SYSTEM --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 99999;
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 650px;
+            border-radius: 24px 24px 0 0;
+            padding: 24px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        @media (min-width: 769px) {
+            .modal-overlay { align-items: center; }
+            .modal-content { border-radius: 20px; max-height: 85vh; width: 90%; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            background-color: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 101;
+        }
+
+        .modal-img-viewer-container { width: 100%; margin-bottom: 20px; position: relative; }
+        
+        .modal-img-holder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+            display: flex;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .modal-img-holder::-webkit-scrollbar { display: none; }
+        
+        .modal-slide-item { 
+            min-width: 100%; 
+            width: 100%; 
+            height: 100%; 
+            scroll-snap-align: start; 
+            scroll-snap-stop: always;
+            position: relative; 
+            flex-shrink: 0; 
+        }
+        .modal-slide-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .image-index-badge {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            background-color: rgba(15, 23, 42, 0.65);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        .modal-thumbnail-gallery { display: flex; gap: 10px; margin-top: 12px; overflow-x: auto; padding-bottom: 6px; }
+        .thumb-item { width: 64px; height: 64px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; position: relative; flex-shrink: 0; overflow: hidden; }
+        .thumb-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
+        .thumb-item.active { border-color: #ff4e00; }
+
+        .modal-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .modal-price-bar { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;}
+        .modal-price { font-size: 24px; font-weight: 800; color: #ff4e00; }
+        .modal-old-price { font-size: 14px; color: #94a3b8; text-decoration: line-through; }
+        .modal-badge { font-size: 12px; color: #ff4e00; background-color: #fff4ee; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+
+        .modal-section-title { font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 8px; text-transform: uppercase; }
+        .modal-desc { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 16px; background-color: #f8fafc; padding: 12px; border-radius: 10px; }
+        .modal-overview-box { font-size: 13px; color: #1e293b; line-height: 1.6; margin-bottom: 16px; background-color: #f1f5f9; padding: 12px 14px; border-radius: 10px; border-left: 4px solid #475569; white-space: pre-line; }
+
+        .modal-return-panel { background: #fef2f2; border: 1px dashed #fca5a5; padding: 12px 14px; border-radius: 10px; margin-bottom: 24px; }
+        .return-title-row { display: flex; align-items: center; gap: 8px; color: #dc2626; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+        .return-body-text { font-size: 12px; color: #7f1d1d; line-height: 1.5; }
+
+        .address-panel-box { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px; margin-bottom: 20px; }
+        .checkout-form-grid { display: flex; flex-direction: column; gap: 16px; }
+        .form-input-wrapper { position: relative; display: flex; align-items: center; }
+        .form-input-wrapper i { position: absolute; left: 14px; color: #94a3b8; font-size: 14px; z-index: 10; }
+        .form-input-wrapper input, .form-input-wrapper select, .form-input-wrapper textarea { width: 100%; padding: 13px 14px 13px 40px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 14px; outline: none; background-color: #f8fafc; }
+        .form-input-wrapper input:focus, .form-input-wrapper select:focus, .form-input-wrapper textarea:focus { border-color: #ff4e00; background-color: #ffffff; }
+        .form-split-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .delivery-chips-group { display: flex; gap: 10px; margin-top: 4px; }
+        .address-chip { flex: 1; padding: 11px; border: 1.5px solid #e2e8f0; border-radius: 10px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .address-chip.selected { border-color: #ff4e00; background-color: #fff4ee; color: #ff4e00; }
+
+        .pro-buy-btn { width: 100%; background: linear-gradient(135deg, #ff6a00 0%, #ff4e00 100%); color: #ffffff; border: none; padding: 15px; font-size: 15px; font-weight: 700; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        .bottom-nav-bar { display: none; }
+
+        /* --- MOBILE LOGIC SYSTEM --- */
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            .sidebar-categories, .top-bar { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar, .sidebar-categories, .banner-img { display: none !important; }
+            body { padding-bottom: 74px; background-color: #f4f6f9; }
+            header { padding: 12px 16px; gap: 12px; background-color: #ffffff; }
+            .logo { font-size: 25px; }
+            .header-icons div span { display: none; }
+            .search-container { width: 100%; height: 42px; }
+            .search-container input { border-radius: 8px 0 0 8px; }
+            .search-btn { width: 52px; border-radius: 0 8px 8px 0; }
+            .hero-section { padding: 12px; }
+            .main-banner { padding: 26px 20px; border-radius: 16px; }
+            .banner-text h2 { font-size: 28px; }
+
+            .mobile-categories-scroll {
+                display: flex; overflow-x: auto; gap: 16px; padding: 14px 16px; background-color: #ffffff; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0;
+            }
+            .mobile-cat-item { display: flex; flex-direction: column; align-items: center; min-width: 64px; }
+            .mobile-cat-item .circle-icon { width: 48px; height: 48px; background-color: #f8fafc; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #475569; margin-bottom: 6px; border: 1px solid #e2e8f0; }
+            .mobile-cat-item.active .circle-icon { background: linear-gradient(135deg, #ff6a00 0%, #ff4e00 100%); color: #ffffff; }
+            .mobile-cat-item span { font-size: 11px; font-weight: 600; color: #64748b; }
+            .mobile-cat-item.active span { color: #ff4e00; font-weight: 700; }
+
+            .flash-sale-section { padding: 0 10px 30px 10px; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .product-title { font-size: 12px; height: 34px; margin: 0 10px 6px 10px; }
+            .product-price { font-size: 15px; margin-left: 10px; }
+
+            .bottom-nav-bar {
+                display: flex; position: fixed; bottom: 0; left: 0; width: 100%; height: 56px; background-color: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-top: 1px solid #e2e8f0; justify-content: space-around; align-items: center; z-index: 999;
+            }
+            .bottom-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 10px; font-weight: 600; text-decoration: none; width: 33.33%; height: 100%; }
+            .bottom-tab i { font-size: 18px; margin-bottom: 2px; }
+            .bottom-tab.active { color: #ff4e00; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="links"><a href="#">Save More on App</a><a href="#">Sell on Hamviro</a></div>
+    </div>
+
+    <header>
+        <div class="header-top-row">
+            <div class="logo" id="brandLogo">Hamviro</div>
+            <div class="header-icons">
+                <div onclick="alert('Wishlist integrated!')"><i class="fa-regular fa-heart"></i></div>
+                <div onclick="alert('Cart active!')"><i class="fa-solid fa-bag-shopping"></i></div>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search premium deals...">
+            <button class="search-btn" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="sidebar-categories" id="desktopCats"></div>
+        <div class="main-banner">
+            <div class="banner-text">
+                <span>EXCLUSIVE STORE</span>
+                <h2>WELCOME TO <br>HAMVIRO</h2>
+                <div class="shop-now-btn" id="bannerBtn">Explore Products</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-categories-scroll" id="mobileCats"></div>
+
+    <div class="flash-sale-section">
+        <div class="section-header">
+            <div class="flash-sale-title">
+                <span id="sectionTitle">All Products</span>
+                <span class="timer" id="liveTimer">00 : 00 : 00</span>
+            </div>
+        </div>
+        <div class="products-grid" id="productsContainer"></div>
+    </div>
+
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <div class="close-modal" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></div>
+            <div class="modal-img-viewer-container">
+                <div class="image-index-badge" id="imageIndexLabel">1 / 1</div>
+                <div class="modal-img-holder" id="modalSliderBox"></div>
+                <div class="modal-thumbnail-gallery" id="modalThumbGallery"></div>
+            </div>
+
+            <h3 class="modal-title" id="modalTitle">Product Title</h3>
+            <div class="modal-price-bar">
+                <span class="modal-price" id="modalPrice">Rs. 0</span>
+                <span class="modal-old-price" id="modalOldPrice">Rs. 0</span>
+                <span class="modal-badge" id="modalDiscount">-0%</span>
+            </div>
+
+            <h4 class="modal-section-title">Product Details</h4>
+            <div class="modal-desc" id="modalDesc"></div>
+
+            <h4 class="modal-section-title"><i class="fa-solid fa-file-lines"></i> Product Overview</h4>
+            <div class="modal-overview-box" id="modalOverview"></div>
+
+            <div class="modal-return-panel">
+                <div class="return-title-row"><i class="fa-solid fa-truck-ramp-box"></i> Return allowed within 7 days</div>
+                <div class="return-body-text">Order ghalat, mukhtalif ya na-mukamal deliver hone ki surat mein return ki darkhast saat (7) din k andar de ja sakti hai.</div>
+            </div>
+
+            <h4 class="modal-section-title" style="color: #ff4e00; margin-bottom: 12px;"><i class="fa-solid fa-map-location-dot"></i> Delivery Address</h4>
+            <div class="address-panel-box">
+                <form id="checkoutForm" class="checkout-form-grid">
+                    <div class="form-input-wrapper"><i class="fa-solid fa-user"></i><input type="text" id="custName" placeholder="Full Name" required></div>
+                    <div class="form-input-wrapper"><i class="fa-solid fa-phone"></i><input type="tel" id="custPhone" placeholder="Mobile Number" required></div>
+                    <div class="form-split-row">
+                        <div class="form-input-wrapper">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <select id="custProvince" required>
+                                <option value="" disabled selected>Province</option>
+                                <option value="Punjab">Punjab</option><option value="Sindh">Sindh</option><option value="KPK">KPK</option><option value="Balochistan">Balochistan</option><option value="Islamabad">Islamabad</option>
+                            </select>
+                        </div>
+                        <div class="form-input-wrapper"><i class="fa-solid fa-city"></i><input type="text" id="custCity" placeholder="City Name" required></div>
+                    </div>
+                    <div class="form-input-wrapper"><i class="fa-solid fa-house"></i><textarea id="custAddress" rows="2" placeholder="Full House Address" required></textarea></div>
+                    <div class="delivery-chips-group">
+                        <div class="address-chip selected" id="chipHome" onclick="selectAddressLabel('Home')">Home</div>
+                        <div class="address-chip" id="chipOffice" onclick="selectAddressLabel('Office')">Office</div>
+                    </div>
+                    <button type="submit" class="pro-buy-btn"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav-bar">
+        <div class="bottom-tab active" id="homeTab"><i class="fa-solid fa-house-user"></i><span>Home</span></div>
+        <div class="bottom-tab" onclick="alert('Categories active!')"><i class="fa-solid fa-border-all"></i><span>Categories</span></div>
+        <div class="bottom-tab" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fa-solid fa-arrow-up-to-line"></i><span>Top</span></div>
+    </div>
+
+    <script>
+        const MY_BUSINESS_WHATSAPP = "923422531403"; 
+
+        // ALL YOUR 54.5KB ORIGINAL BULK PRODUCTS RESTORED PERFECTLY
+        const PRODUCTS_DATA = [
+            {
+                title: "Grey Studded Crossbody Bag with Gold Hardware",
+                category: "beauty",
+                price: "1,499",
+                oldPrice: "1650",
+                discount: "-32",
+                images: ["https://i.ibb.co/Kx26Yp87/MZ1905200027-RDNEFS-media-1.webp","https://i.ibb.co/bMzVmGTr/MZ1905200027-RDNEFS-media-2.webp","https://i.ibb.co/ks0m4bG9/MZ1905200027-RDNEFS-media-3.webp"],
+                description: "This elegant grey crossbody bag is the perfect blend of sophistication and practicality, ideal for Pakistani women who demand both style and durability. Whether you’re heading to a formal event or a casual outing, this bag effortlessly complements your outfit while keeping your essentials secure. The premium PU leather construction ensures long-lasting use, while the subtle studded texture adds a touch of modern flair. Its sleek, minimalist design makes it versatile enough for offices, weddings, or everyday errands. The bag’s sturdy structure and thoughtful design make it a reliable companion for busy lifestyles. The adjustable strap allows for comfortable wear, and the secure buckle closure keeps your belongings safe. The soft grey hue pairs beautifully with any wardrobe, and the gold-tone hardware adds a refined accent. Lightweight yet spacious, it’s designed to carry your essentials without weighing you down. - Premium Quality PU leather for durability - Stylish studded pattern for modern appeal - Adjustable crossbody strap for comfort - Secure buckle closure for safety - Lightweight design perfect for daily use - Ideal for weddings, offices, or casual outings",
+                overview: "Highlights\n\nMaterial: PU Leather\nPattern: Studded\nGender: Women's\nNumber Of Pieces: 1 Pc\nProduct Feature: Minimal\nColor: Grey\nPackage Includes: 1 x Crossbody Bag\nLength: 25 Cm\nWidth: 10 Cm\nHeight: 15 Cm\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+            {
+                title: "V34 Teeth Whitening Serum 30ml Purple Travel Bottle",
+                category: "beauty",
+                price: "8,00",
+                oldPrice: "1,100",
+                discount: "-35",
+                images: ["https://i.ibb.co/bg50jMBZ/MZ608200035-SHBS-media-1.jpg","https://i.ibb.co/ksxpmNgs/MZ608200035-SHBS-media-2.jpg","https://i.ibb.co/fGdNLqHZ/MZ608200035-SHBS-media-3.jpg","https://i.ibb.co/v4ydg4q6/MZ608200035-SHBS-media-4.jpg","https://i.ibb.co/dJ41pG49/MZ608200035-SHBS-media-5.jpg","https://i.ibb.co/67r5wHwJ/MZ608200035-SHBS-media-6.jpg"],
+                description: "Transform your smile with the V34 Colour Corrector Serum, the stylish and durable solution for Pakistani shoppers seeking salon-grade teeth whitening at the best price in Pakistan. Perfect for daily use, this smooth, purple liquid glides effortlessly to neutralize yellow tones and reveal a brighter, more confident grin—ideal for office days or special occasions. Crafted for long-lasting performance, this serum’s premium quality formula ensures consistent results without harsh chemicals. Its sleek, travel-friendly bottle is designed to stay leak-proof and durable, making it perfect for your daily routine or weekend getaways. The elegant purple packaging adds a touch of sophistication to your beauty essentials, while the 30ml size ensures you get maximum value without waste. - Teeth Whitening Formula for Brighter Smiles - Smooth, Non-Greasy Texture for Easy Application - Durable, Leak-Proof Bottle for Travel and Storage - Stylish Purple Design That Matches Any Beauty Routine - Best Price in Pakistan for Premium Quality - Ideal for Daily Use and Special Occasions",
+                overview: "Material: Liquid\nTexture: Smooth\nColor: Purple\nProduct Feature: Teeth Whitening\nPackage Includes: 1 x 1 x V34 Colour Corrector Serum - Purple Toothpaste\nVolume: 30 Ml\nPack Of 1\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+            {
+                title: "15-in-1 Makeup Set for Pakistani Women - Water-Proof & Long Lasting",
+                category: "beauty",
+                price: "2,000",
+                oldPrice: "2,400",
+                discount: "-32",
+                images: ["https://i.ibb.co/43DM8MG/MZ65800000070-TW-media-1.jpg","https://i.ibb.co/93s9W89y/MZ65800000070-TW-media-2.jpg"],
+                description: "This 15 in 1 Makeup Deal is perfect for Pakistani women who want flawless, long-lasting makeup without breaking the bank. Designed for all seasons, it’s ideal for weddings, parties, or daily office wear, offering a smooth, durable finish that stays put even in hot weather. The set includes premium quality essentials like a water-proof foundation, a matte fixer, and a beauty blender that ensures even application and easy cleanup. The products are crafted with durable, reusable materials that resist fading and maintain their vibrant color. The creamy textures glide on effortlessly, providing a natural, radiant look that lasts all day. Whether you’re a makeup newbie or a professional artist, this set delivers professional-grade results with minimal effort. The compact, travel-friendly design makes it easy to carry and use anywhere. - Includes 15 essential makeup items for complete coverage - Features water-proof and long-lasting formulas for all-day wear - Premium quality materials ensure durability and smooth application - Perfect for weddings, parties, and everyday use in Pakistan - Affordable price with best value for money in the market - Reusable beauty tools like the blender and paint stick for eco-friendly use",
+                overview: "This 15 in 1 Makeup Deal is perfect for Pakistani women who want flawless, long-lasting makeup without breaking the bank. Designed for all seasons, it’s ideal for weddings, parties, or daily office wear, offering a smooth, durable finish that stays put even in hot weather. The set includes premium quality essentials like a water-proof foundation, a matte fixer, and a beauty blender that ensures even application and easy cleanup. The products are crafted with durable, reusable materials that resist fading and maintain their vibrant color. The creamy textures glide on effortlessly, providing a natural, radiant look that lasts all day. Whether you’re a makeup newbie or a professional artist, this set delivers professional-grade results with minimal effort. The compact, travel-friendly design makes it easy to carry and use anywhere. - Includes 15 essential makeup items for complete coverage - Features water-proof and long-lasting formulas for all-day wear - Premium quality materials ensure durability and smooth application - Perfect for weddings, parties, and everyday use in Pakistan - Affordable price with best value for money in the market - Reusable beauty tools like the blender and paint stick for eco-friendly use"
+            },
+            {
+                title: "Anti-Acne 1% Salicylic Acid Face Wash for Oily, Breakout-Prone Skin",
+                category: "beauty",
+                price: "800",
+                oldPrice: "1,000",
+                discount: "-33",
+                images: ["https://i.ibb.co/BFgc10N/MZ1501200107-MIUKSE-media-1.webp","https://i.ibb.co/7NvTjhLw/MZ1501200107-MIUKSE-media-2.webp","https://i.ibb.co/pjC2fjB6/MZ1501200107-MIUKSE-media-3.webp"],
+                description: "Anti-Acne 1% Salicylic Acid Face Wash for Oily, Breakout-Prone Skin",
+                overview: "Material: Gel\nSkin Types: Acne-Prone Skin\nColor: White\nProduct Feature: Anti-Aging\nPackage Includes: 1 x Face Wash\nVolume: 100 Ml\nClearer, fresher, less oily skin. An anti-acne face wash with 1% salicylic acid for oily, breakout-prone skin.\nThis gentle foaming cleanser uses 1% salicylic acid (a pore-clearing BHA) to wash away excess oil, dirt and impurities while helping to unclog pores and target breakouts. Skin is left feeling clean, fresh and balanced — never tight or stripped.\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+            {
+                title: "Grey Studded Crossbody Bag with Gold Hardware",
+                category: "ladies-fashion",
+                price: "1,400",
+                oldPrice: "1,600",
+                discount: "-30",
+                images: ["https://i.ibb.co/Kx26Yp87/MZ1905200027-RDNEFS-media-1.webp","https://i.ibb.co/bMzVmGTr/MZ1905200027-RDNEFS-media-2.webp","https://i.ibb.co/ks0m4bG9/MZ1905200027-RDNEFS-media-3.webp"],
+                description: "This elegant grey crossbody bag is the perfect blend of sophistication and practicality, ideal for Pakistani women who demand both style and durability. Whether you’re heading to a formal event or a casual outing, this bag effortlessly complements your outfit while keeping your essentials secure. The premium PU leather construction ensures long-lasting use, while the subtle studded texture adds a touch of modern flair. Its sleek, minimalist design makes it versatile enough for offices, weddings, or everyday errands. The bag’s sturdy structure and thoughtful design make it a reliable companion for busy lifestyles. The adjustable strap allows for comfortable wear, and the secure buckle closure keeps your belongings safe. The soft grey hue pairs beautifully with any wardrobe, and the gold-tone hardware adds a refined accent. Lightweight yet spacious, it’s designed to carry your essentials without weighing you down. - Premium Quality PU leather for durability - Stylish studded pattern for modern appeal - Adjustable crossbody strap for comfort - Secure buckle closure for safety - Lightweight design perfect for daily use - Ideal for weddings, offices, or casual outings",
+                overview: "Material: PU Leather\nPattern: Studded\nGender: Women's\nNumber Of Pieces: 1 Pc\nProduct Feature: Minimal\nColor: Grey\nPackage Includes: 1 x Crossbody Bag\nLength: 25 Cm\nWidth: 10 Cm\nHeight: 15 Cm\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+            {
+                title: "Black PU Leather Crossbody Bag for Women",
+                category: "ladies-fashion",
+                price: "1,650",
+                oldPrice: "1,900",
+                discount: "-32",
+                images: ["https://i.ibb.co/BHRswfm0/MZ1905200025-RDNEFS-media-1.webp"],
+                description: "Perfect for daily commutes or evening outings, this crossbody bag is designed to match Pakistan’s vibrant lifestyle while staying practical for all seasons. Its sleek black finish and minimalist design make it ideal for both office wear and casual gatherings. Crafted from premium quality PU leather, it’s built to last through daily use without losing its shape or style. The sturdy construction ensures durability, while the elegant silver-toned clasp adds a touch of sophistication that complements any outfit. This new arrival is not just stylish but also incredibly functional. The adjustable brown strap allows for comfortable wear over the shoulder or across the body, making it easy to carry your essentials without hassle. The compact size fits perfectly in your handbag or under your arm, while the durable material resists wear and tear. Whether you’re heading to work, school, or a social event, this bag offers both fashion and function at the best price in Pakistan. - Made from premium quality PU leather for long-lasting durability - Stylish black design with a brown strap for a chic contrast - Minimalist look that suits any occasion or outfit - Adjustable strap for comfortable, hands-free carrying - Compact dimensions: 25 cm length, 10 cm width, 15 cm height - New arrival with a modern, versatile design perfect for Pakistani women",
+                overview: "Material: PU Leather\nPattern: Plain\nGender: Women's\nNumber Of Pieces: 1 Pc\nProduct Feature: Minimal\nColor: Black\nPackage Includes: 1 x Crossbody Bag\nLength: 25 Cm\nWidth: 10 Cm\nHeight: 15 Cm\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varyin"
+            },
+                        {
+                title: "Butterfly Necklace Set Gold Tones Lightweight Alloy for Women",
+                category: "ladies-fashion",
+                price: "743",
+                oldPrice: "800",
+                discount: "-6%",
+                images: ["https://i.ibb.co/xtq6X7WP/MZ1967200003-JRCS-media-1.webp","https://i.ibb.co/GvjgJJkt/MZ1967200003-JRCS-media-2.webp","https://i.ibb.co/LDvw1XT7/MZ1967200003-JRCS-media-3.webp","https://i.ibb.co/20tQ6ZBB/MZ1967200003-JRCS-media-4.webp","https://i.ibb.co/qF30fTpM/MZ1967200003-JRCS-media-5.webp","https://i.ibb.co/BVtydVzv/MZ1967200003-JRCS-media-6.webp"],
+                description: "This elegant butterfly necklace set is perfect for Pakistani women who want to look chic for any occasion, from office wear to festive gatherings. The delicate butterfly design adds a touch of grace and charm, while the alloy material ensures it’s both lightweight and durable enough to handle daily wear. Whether you’re dressing up for a wedding, a dinner date, or simply adding a stylish accent to your outfit, this set offers timeless beauty without compromising on quality. The set includes four pieces: a necklace, a pair of earrings, and a ring, all featuring a soft white enamel finish with gold-toned edges. The alloy construction makes it resistant to tarnishing and comfortable to wear, even during long hours. Designed with attention to detail, each piece is crafted to match seamlessly, making it ideal for gifting or personal use. The set is not only stylish but also practical, with a design that suits various skin tones and outfits. - Premium Quality alloy material for long-lasting wear - Stylish butterfly design that complements any outfit - Includes 4 pieces: necklace, earrings, and ring - Lightweight and comfortable for daily use - Best price in Pakistan for such a beautiful set - New Arrival – perfect for gifting or personal use",
+                overview: "Highlights\n\nMaterial: Alloy\nNumber Of Pieces: 4 Pcs\nColor: Black, White\nPackage Includes: 4 x Necklace Set\nNote: Keep jewelry dry, away from chemicals. Store separately in a soft pouch. There might be a slight color difference due to different light and monitor effects."
+            },
+            {
+                title: "Korean Butterfly Pearl Earrings with Crystal Dangle",
+                category: "ladies-fashion",
+                price: "563",
+                oldPrice: "0",
+                discount: "-0",
+                images: ["https://i.ibb.co/VWgVYxSJ/MZ1967200013-JRCS-media-1.webp","https://i.ibb.co/dwjqGgFT/MZ1967200013-JRCS-media-2.webp"],
+                description: "These Korean Butterfly Pearl Shape Earrings are the perfect blend of elegance and affordability for every Pakistani woman. Designed for daily wear or special occasions, they add a touch of vintage charm to your look without breaking the bank. Whether you’re heading to a wedding, office, or casual outing, these stylish earrings will make you stand out with grace. Crafted with premium quality alloy, these earrings are built to last. The delicate butterfly design features a lustrous pearl-like finish on the wings, accented with sparkling rhinestones and a teardrop-shaped crystal dangle that catches the light beautifully. The golden alloy frame gives them a warm, sophisticated glow that complements any skin tone. Lightweight and comfortable to wear, they won’t irritate your ears even during long hours. Their durable construction ensures they stay shiny and intact, even with daily use. - Premium Quality alloy material for long-lasting wear - Stylish butterfly design with pearl and crystal accents - Golden finish that matches any outfit - Perfect for daily wear, weddings, or office events - Lightweight and comfortable for extended wear - Comes with 2 pieces in a soft storage pouch for safekeeping",
+                overview: "Highlights\n\nMaterial: Alloy\nGender Type: Women\nNumber Of Pieces: 2 Pcs\nColor: Golden\nPackage Includes: 2 x Earrings\nNote: Keep jewelry dry, away from chemicals. Store separately in a soft pouch. There might be a slight color difference due to different light and monitor effects."
+            },
+            {
+                title: "Golden Butterfly Hair Clips for Girls - Medium Length, Durable, Sparkling Design",
+                category: "ladies-fashion",
+                price: "576",
+                oldPrice: "0",
+                discount: "-0",
+                images: ["https://i.ibb.co/gZSbJcMb/MZ1119201671-BYBR-media-1.webp","https://i.ibb.co/PsBR4fjZ/MZ1119201671-BYBR-media-2.webp"],
+                description: "These elegant butterfly hair pins are perfect for Pakistani girls who want to add a touch of glamour to their everyday look or special occasions. Designed with sparkling diamond-like embellishments and a sturdy golden metal finish, they offer both style and durability. Whether you’re heading to a wedding, a party, or just want to elevate your school or office outfit, these clips hold your hair securely without slipping. The medium-length design fits most hair types and ensures a comfortable, long-lasting hold. Made from high-quality metal, these hair accessories are built to last through daily use and even harsh weather conditions. The golden color adds a luxurious feel that complements any outfit, while the intricate butterfly design makes you stand out. Each clip is crafted with precision to ensure smooth insertion and a secure grip. You’ll love how they look and how well they perform. - Premium Quality metal construction for long-lasting use - Stylish golden butterfly design with sparkling details - Durable and comfortable for daily or special occasion wear - Perfect for parties, weddings, school, or office - New Arrival – best price in Pakistan - Comes with 3 pieces for versatile styling options",
+                overview: "Material: Metal\nProduct Feature: Medium Length\nColor: Golden\nPackage Includes: 3 x Hair Pins And Clips\nNote: There might be slight color differences as a result of varying lighting and monitor effects"
+            },
+            {
+                title: "Gold Plated Pearl Thread Bracelet for Women",
+                category: "ladies-fashion",
+                price: "684",
+                oldPrice: "0",
+                discount: "-0",
+                images: ["https://i.ibb.co/tp76rJVN/MZ7000000124-TEES-media-1.jpg","https://i.ibb.co/DHZZPBcg/MZ7000000124-TEES-media-2.jpg","https://i.ibb.co/0phfgm2D/MZ7000000124-TEES-media-3.jpg","https://i.ibb.co/0VX0NqYX/MZ7000000124-TEES-media-4.jpg"],
+                description: "This elegant gold-plated pearl thread bracelet is perfect for Pakistani women who want to add a touch of sophistication to their daily outfits or special occasions. Designed with a delicate toggle clasp and charming pearl accents, it’s ideal for weddings, parties, or festive events. The lightweight alloy construction ensures comfort all day long, while the gold plating adds a luxurious shine that lasts. Crafted with durable materials, this bracelet is built to withstand everyday wear without losing its luster. The white pearls complement any skin tone and pair beautifully with traditional or modern attire. Whether you’re dressing for Eid, a bridal event, or a casual outing, this stylish piece enhances your look effortlessly. Its simple yet chic design makes it a timeless addition to your jewelry collection. - Gold plated for a luxurious finish that resists tarnishing - Lightweight alloy construction for all-day comfort - White pearl accents for a classic, elegant look - Toggle clasp for easy wear and secure fit - Perfect for weddings, parties, and festive occasions - New Arrival – best price in Pakistan for premium quality",
+                overview: "Material: Alloy\nPlating: Gold Plated\nStone: Pearl\nNumber Of Pieces: 1 Pc\nSize: Standard Size\nColor: White\nPackage Includes: 1 x Thread Bracelet\nNote: Keep jewelry dry, away from chemicals. Store separately in a soft pouch. There might be a slight color difference due to different light and monitor effects."
+            },
+            {
+                title: "Whitening Brightening Zafarani Cream for All Skin Types",
+                category: "beauty",
+                price: "1,150",
+                oldPrice: "1,480",
+                discount: "-25",
+                images: ["https://i.ibb.co/WWGmvQsk/MZ1165200236-BYFR-media-1.webp","https://i.ibb.co/8gJH7wTF/MZ1165200236-BYFR-media-2.webp","https://i.ibb.co/q8GhW9T/MZ1165200236-BYFR-media-3.webp","https://i.ibb.co/4RMc0Vgq/MZ1165200236-BYFR-media-4.webp"],
+                description: "Achieve flawless, radiant skin with our Whitening And Brightening Zafarani Cream, specially crafted for all skin types in Pakistan. Perfect for brides, office professionals, and anyone seeking a natural glow, this cream delivers visible results without harsh chemicals. Ideal for daily use, it enhances your skin’s tone while keeping it soft and smooth. Our premium formula is made with high-pigmented, skin-loving ingredients that work gently to brighten and even your complexion. Durable and long-lasting, it’s designed to withstand Pakistan’s climate and daily wear. Whether you’re preparing for a wedding, a job interview, or just want to feel confident, this cream delivers consistent results. The creamy texture absorbs quickly, leaving no residue and no greasy feel. - Premium Quality cream for all skin types - Durable formula with high-pigmented ingredients - Stylish and effective for daily or special occasions - New Arrival – best price in Pakistan - Pack of 2 for long-term use and value - Suitable for morning and evening skin care routines",
+                overview: "Material: Cream\nTexture: High Pigmented\nSkin Types: All Skin Types\nProduct Feature: Whitening And Brightening\nPackage Includes: 2 x Whitening Cream\nWeight: 200 Gram\nSet Of 2\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+{
+                title: "Save· 9 Sheaffer Powder Foundation – Waterproof & Oil Control Long-Lasting Face Makeup",
+                category: "beauty",
+                price: "1,140",
+                oldPrice: "1,400",
+                discount: "-32",
+                images: ["https://i.ibb.co/Swc5dXzy/MZ1533200205-SGSE-media-1.webp","https://i.ibb.co/KxwkBYD5/MZ1533200205-SGSE-media-2.webp","https://i.ibb.co/LMzkWCc/MZ1533200205-SGSE-media-3.webp","https://i.ibb.co/1tHdQ1gg/MZ1533200205-SGSE-media-4.webp","https://i.ibb.co/5gGNBPvy/MZ1533200205-SGSE-media-5.webp"],
+                description: "Velvet Matte Finish: Provides a smooth, flawless, and non-cakey look. Oil Control Formula: Keeps your face shine-free all day long. Waterproof & Sweat-proof: Stays intact through humidity and active hours. Full Coverage: Easily conceals blemishes, pores, and uneven skin tone. Lightweight: Comfortable for daily wear with a breathable feel.",
+                overview: "Material: Powder\nShade: Ivory\nProduct Feature: High Coverage, Matte, Dark Spots Coverage, Acne Coverage, Normal Skin, Sensitive Skin, All Skin Types\nPackage Includes: 1 x Foundation\nAchieve a flawless complexion with the Sheaffer Powder Foundation. Specially crafted for a smooth, velvet matte finish, this powder foundation is your ultimate solution for long-lasting makeup. Its advanced oil-control and waterproof formula ensures that your skin remains fresh, shine-free, and perfectly set, regardless of the weather or activity level.\nWhether you are looking for light touch-ups or buildable full coverage, Sheaffer provides a natural, radiant look that covers imperfections and minimizes the appearance of pores. Lightweight and easy to apply, it’s the perfect addition to your daily beauty routine for a professional, airbrushed effect that lasts all day.\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+{
+                title: "Rawmin's Magic BB Cream High Coverage Glowy SPF 30",
+                category: "beauty",
+                price: "1,775",
+                oldPrice: "1,900",
+                discount: "-30%",
+                images: ["https://i.ibb.co/Ld9bvNBv/MZ2017200158-LYBY-media-1.webp","https://i.ibb.co/k21DcJt7/MZ2017200158-LYBY-media-2.webp","https://i.ibb.co/HffQzzJb/MZ2017200158-LYBY-media-3.webp"],
+                description: "",
+                overview: "Material: Cream\nProduct Feature: High Coverage, Glowy, 24 Hours Medium Coverage, Acne Coverage, Dark Spots Coverage\nPackage Includes: 1 x BB Cream\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+            {
+                title: "Double Bedsheet Set Crystal Cotton Multicolor 90x97",
+                category: "beauty",
+                price: "1,699",
+                oldPrice: "2,000",
+                discount: "-20",
+                images: ["https://i.ibb.co/p781bMB/MZ17200000309-AUTBFS-media-1.jpg","https://i.ibb.co/XfGvw99T/MZ17200000309-AUTBFS-media-2.jpg"],
+                description: "Upgrade your bedroom instantly with this vibrant printed double bedsheets set — perfect for Pakistani homes seeking both comfort and style. Designed for local weather and everyday use, this multicolor ensemble brings a fresh, lively look to any room while keeping you cool and cozy. Made from premium Crystal Cotton, it’s breathable, soft, and built to last, making it ideal for families and busy households. This 3-piece set includes one bedsheet and two pillow covers, all crafted with durable stitching and vibrant prints that won’t fade easily. The Crystal Cotton fabric ensures a smooth, silky feel against your skin, while the generous 90x97 inch bedsheet size fits double beds perfectly. Whether you’re decorating for a wedding, office, or casual home, this set adds a trendy, modern touch without breaking the bank. It’s the best price in Pakistan for such premium quality and stylish design. - Made from premium Crystal Cotton for softness and breathability - Vibrant multicolor printed design for a fresh, modern look - Durable stitching and high-quality fabric for long-lasting use - Perfect fit for double beds with precise 90x97 inch dimensions - Includes 1 bedsheet and 2 pillow covers for complete set - Stylish and affordable — ideal for Pakistani homes seeking",
+                overview: "abric: Crystal Cotton\nPattern: Printed\nBed Size: Double Bed\nNumber Of Pieces: 3 Pcs\nColor: Multicolor\nPackage Includes: 1 x Bedsheet, 2 x Pillow Covers\nBedsheet Length: 90 Inches\nBedsheet Width: 97 Inches\nPillow Length: 19 Inches\nPillow Width: 29 Inches\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects"
+            },
+{
+                title: "Premium Wireless Earbuds Black Yellow Bluetooth 5.3",
+                category: "men-fashion",
+                price: "1,150",
+                oldPrice: "1,500",
+                discount: "-30",
+                images: ["https://i.ibb.co/QFm4SxBh/MZ70400000021-MTAS-media-1.webp","https://i.ibb.co/ZRCBGTZC/MZ70400000021-MTAS-media-2.webp","https://i.ibb.co/20HbLR1m/MZ70400000021-MTAS-media-3.webp","https://i.ibb.co/9HpmR5GH/MZ70400000021-MTAS-media-4.webp","https://i.ibb.co/mMn1JMh/MZ70400000021-MTAS-media-5.webp","https://i.ibb.co/HpH4HX7s/MZ70400000021-MTAS-media-6.webp","https://i.ibb.co/5XkSG355/MZ70400000021-MTAS-media-7.webp","https://i.ibb.co/svzmMfrm/MZ70400000021-MTAS-media-8.webp","https://i.ibb.co/Ps6R5ZcC/MZ70400000021-MTAS-media-9.webp","https://i.ibb.co/2JZ459n/MZ70400000021-MTAS-media-10.webp"],
+                description: "Looking for premium quality wireless earbuds that deliver clear sound and long battery life? These stylish TWS 895B V5.3 earbuds are perfect for busy Pakistani lifestyles, offering all-day comfort and smart touch controls for calls and music. Designed to handle daily use, they’re ideal for commuting, workouts, or casual listening without worrying about battery drain. Made from durable ABS plastic, these earbuds are built to last through everyday wear and tear. The sleek black and yellow design adds a modern touch to your tech, while the compact charging case ensures you’re always ready. With Bluetooth 5.3 for stable connections and a 300mAh battery, you get up to 3 hours of call time and 5 hours of standby. The smart touch interface lets you control music and calls effortlessly, making them compatible with all Android devices. - Premium quality construction with durable ABS plastic for long-term use - Stylish black and yellow design that stands out - Bluetooth 5.3 for fast, stable wireless connections - Long-lasting battery with fast charge for all-day comfort - Smart touch controls for calls, music, and navigation - Lightweight and compact, perfect for on-the-go use",
+                overview: "Material: ABS Plastic\nConnectivity Tech: Bluetooth\nBluetooth Version: Bluetooth 5.3\nProduct Feature: Long-Lasting Battery With Fast Charge, Designed For All-Day Comfort, Smart Touch, Power On/Off, Answer, Redial, Hang Up, Play, Pause, Next Track, Long Battery Life, Compatible With All Android Devices, Clear Voice\nColor: Black, White\nPackage Includes: 2 x Earbuds, 1 x Charging Case, 1 x Charger Cable, 1 x Manual\n895 Model Number\nBattery Capacity: 300 mAh\nCall Time: 3 Hours\nStandby Time: 5 Hours\nVoltage: 300 A\nWatts: 4 Watt\nWeight: 50 Gram\nLength: 3.0 Cm\nWidth: 2.0 Cm\nHeight: 3.0 Cm\nNote: Please ensure to follow the instructions provided in the user manual for proper usage and safety precautions."
+            },
+{
+                title: " MOBILE SCREEN CONVERTER IN BIG SCREEN",
+                category: "accessories",
+                price: "780",
+                oldPrice: "1000",
+                discount: "-32%",
+                images: ["https://i.ibb.co/VKbxsvS/MZ59420027-OEKI-media-1.jpg","https://i.ibb.co/Ld4CnW4n/MZ59420027-OEKI-media-2.jpg","https://i.ibb.co/gL6J0ymg/MZ59420027-OEKI-media-3.jpg"],
+                description: "Perfect for Pakistani homes and offices, this sleek 12-inch video amplifying screen lets you enjoy your mobile content in crystal-clear, immersive detail. Whether you’re watching movies, gaming, or video calling, it transforms your phone into a cinematic experience without needing bulky equipment. Crafted from durable ABS plastic and premium acrylic, this screen is built to last through daily use. Its stylish black finish blends seamlessly with any decor, while the lightweight design makes it easy to carry and set up anywhere. The viewing distance of 1-2 meters ensures comfortable viewing without straining your eyes, making it ideal for both indoor and outdoor use in Pakistan’s diverse environments. - Premium Quality construction with ABS plastic and acrylic for long-lasting performance - Stylish black design that complements any modern setup - New Arrival with best price in Pakistan for maximum value - Portable and lightweight for easy transport and setup - Ideal for watching videos, gaming, or video calls with enhanced clarity - Durable build to withstand everyday handling and minor impacts",
+                overview: "Material: ABS Plastic. Acrylic\nViewing Distance: 1-2 m\nColor: Black\nPackage Includes: 1 x Video Amplifying Screen\nSize : 12 Inches\nNote: Please ensure to follow the instructions provided in the user manual for proper usage and safety precautions"
+            },
+            {
+                title: "Red F3 Mobile Screen Magnifier with Fresnel Mirror",
+                category: "accessories",
+                price: "995",
+                oldPrice: "1400",
+                discount: "-39",
+                images: ["https://i.ibb.co/jk0Bqj0C/MZ1155200193-SEHB-media-1.webp","https://i.ibb.co/RpYjg7wb/MZ1155200193-SEHB-media-2.webp","https://i.ibb.co/B0x5qSp/MZ1155200193-SEHB-media-3.webp","https://i.ibb.co/TBy1zysP/MZ1155200193-SEHB-media-4.webp","https://i.ibb.co/N8N7wyR/MZ1155200193-SEHB-media-5.webp"],
+                description: "Perfect for Pakistani families and busy professionals, this F3 Mobile Screen Magnifier lets you enjoy movies, games, and videos with crystal-clear, enlarged visuals without straining your eyes. Designed for local use, its sleek red design and durable ABS plastic construction make it ideal for daily use, even in hot weather. The sliding silicone button mechanism protects your phone screen while offering easy access to your content. Whether you’re watching a movie with your kids or presenting at work, this stylish and practical accessory enhances your viewing experience. Made from high-quality ABS plastic and featuring a Fresnel mirror for optical HD zoom, this screen magnifier is built to last. Its non-slip silicone pads ensure your phone stays steady during use, while the adjustable viewing angle lets you customize your comfort. The product is lightweight, portable, and easy to set up — no complicated setup required. The “Buy 1 Get 1 Free” deal means you can double your fun without breaking the bank. - Premium Quality ABS Plastic for long-lasting durability - Stylish Red Design that matches any home or office decor - HD Fresnel Mirror Technology for 3-4x screen enlargement - Sliding Silicone Button for easy access and screen protection - Adjustable Viewing Angle for comfortable viewing - Non-Slip Silicone Pads for secure phone placement",
+                overview: "Highlights\n\nMaterial: ABS Plastic\nColor: White\nPackage Includes: 2 x Video Amplifying Screen\nF3 Mobile Screen Magnifier | Enlarged Mobile Screen Amplifier Large Screen Eyes Protection (Random Color)\nHD display screen: Fresnel mirror screen adopts optical HD zoom technology, which can enlarge HD by 3 to 4 times, effectively preventing radiation generated by mobile phone.\n2. Sliding design: stretch the silicone round button, and then the screen appears. This sliding screen mode helps to protect the screen and is more suitable for transportation.\n3. Simple operation: the screen amplifier doubles the screen size, so you can make the most of movies and videos on your HD smartphone. Add a Bluetooth keyboard and use it to play HD.\n4. High quality materials: ABS plastic and Fresnel mirror, strong and durable, even higher definition. Raise frame adjustable angle of view. Non slip silicone pad protects and stabilizes the phone.\nNote: Please ensure to follow the instructions provided in the user manual for proper usage and safety precautions."
+            },
+            {
+                title: "Men Cotton Markhor Graphic Track Suit Black White XL",
+                category: "men-fashion",
+                price: "1020",
+                oldPrice: "1,400",
+                discount: "-21%",
+                images: ["https://i.ibb.co/21M6tqTd/MZ23700000088-FYSE-media-1.jpg","https://i.ibb.co/x8d3vFJC/MZ23700000088-FYSE-media-2.jpg","https://i.ibb.co/qLhS6sdf/MZ23700000088-FYSE-media-3.jpg"],
+                description: "Size : Medlum Large X-Large \n\nUpgrade your everyday look with this premium quality men’s cotton track suit, designed for comfort and style. Perfect for Pakistan’s warm weather, this stylish set combines a crisp white graphic tee with sleek black joggers, making it ideal for casual outings, gym sessions, or lounging at home. The durable cotton fabric ensures long-lasting wear, while the bold Markhor logo adds a unique, trendy touch to your wardrobe. Whether you’re heading to the office or meeting friends, this new arrival delivers both fashion and function. The tee features a round neck and relaxed fit for maximum comfort, while the joggers offer a modern, tapered silhouette. Both pieces are made from soft, breathable cotton that resists shrinking and maintains its shape over time. The graphic sublimation print is vibrant and fade-resistant, ensuring your design stays sharp even after multiple washes. This set is a smart investment for any man who values both durability and contemporary style. - Premium quality cotton for soft, breathable comfort - Stylish Markhor graphic design on tee and joggers - Durable construction for long-term wear - Perfect fit for daily wear and casual events - New arrival with best price in Pakistan - Available in medium, large, and x-large sizes\n\nHighlights",
+                overview: ".Gender: Men's\nFabric: Cotton\nPattern: Graphic Sublimation\nNeck Type: Round Neck\nSizes: Medium, Large, X-Large\nNumber Of Pieces: 1 Pc\nPackage Includes: 1 x T, 1 x Trouser\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects"
+            },
+{
+                title: "Women's Embroidered Lawn Suit Pink Unstitched 2-Piece",
+                category: "ladies-fashion",
+                price: "2,500",
+                oldPrice: "3,000",
+                discount: "-20%",
+                images: ["https://i.ibb.co/1GSHg7Ms/MZ1094202098-AMCN-media-1.webp","https://i.ibb.co/1GSHg7Ms/MZ1094202098-AMCN-media-1.webp"],
+                description: "Product overview\n\nThis stunning 2-piece women’s unstitched suit is perfect for any occasion, from casual outings to festive gatherings. Designed with premium quality lawn fabric, it offers both comfort and elegance, making it ideal for the warm weather of Pakistan. The intricate embroidery on the shirt adds a touch of sophistication, while the plain trousers ensure a balanced, stylish look. Whether you’re dressing for a party, office, or evening event, this suit delivers durability and charm. The shirt features detailed embroidery on the front, neckline, sleeves, and daman, while the trousers are crafted from smooth lawn with a plain finish for a modern appeal. The fabric is breathable and easy to maintain, ensuring long-lasting wear. The vibrant pink hue is both trendy and versatile, complementing any skin tone. This new arrival is crafted for regular use and is a smart investment for your wardrobe. - Premium quality lawn fabric for comfort and durability - Stylish embroidered shirt with detailed patterns - Plain trousers for a chic, balanced look - Perfect for daily wear, parties, or formal events - New arrival with trendy pink color - Best price in Pakistan for exceptional value",
+                overview: "Shirt Fabric: Lawn\nPattern: Embroidered\nShirt Front Pattern: Embroidered\nNeckline: Embroidered\nSleeves Pattern: Embroidered\nDaman: Embroidered\nShirt Back Pattern: Plain\nTrouser Fabric: Lawn\nTrouser Pattern: Plain\nNumber Of Pieces: 2 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser\nShirt Cutting: 2.75 Meter\nTrouser Cutting: 2.25 Meter\nColor: Pink\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying"
+            },
+                        {
+                title: "Blue Shamoz Silk 3-Piece Gown Set with Rose Embroidery",
+                category: "ladies-fashion",
+                price: "2,795",
+                oldPrice: "4,500",
+                discount: "-42%",
+                images: ["https://i.ibb.co/BV8PcBjp/MZ1993200265-AACN-media-1.webp","https://i.ibb.co/N6Kb5h5J/MZ1993200265-AACN-media-2.webp"],
+                description: "This stunning 3-piece set is perfect for any festive occasion or special event in Pakistan. The elegant blue Shamoz Silk gown with rose embroidery and lace work offers a luxurious look that’s both stylish and comfortable for the local climate. Pair it with the matching inner trousers for a complete, coordinated ensemble that’s ideal for weddings, parties, or family gatherings. Crafted from premium quality Shamoz Silk, this outfit is not only visually stunning but also durable enough to withstand daily wear. The fabric drapes beautifully, ensuring a flattering fit while keeping you cool. The U-neck design and long sleeves add a touch of sophistication, while the embroidered gown flows gracefully. The inner trousers provide comfort and flexibility, making this set suitable for both formal and semi-formal events. - Premium Quality Shamoz Silk fabric for a luxurious feel - Stylish rose embroidery with delicate lace work on the gown - Durable and comfortable for all-day wear - New Arrival with trendy design perfect for Pakistani occasions - Includes 1 shirt, 1 gown, and 1 inner trouser for a complete set - Best price in Pakistan for this high-end ethnic look",
+                overview: "Fabric: Shamoz Silk\nPattern: Embroidered\nNeck Type: U-Neck\nShirt Pattern: Plain\nGown Pattern: Embroidered\nTrouser Fabric: Shamoz Silk\nTrouser Pattern: Plain\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Gown, 1 x Trouser\nGown Length: 53 Inches\nGown Chest: 22 Inches\nGown Shoulder: 16 Inches\nShirt Length: 37 Inches\nShirt Chest: 21 Inches\nShirt Shoulder: 15 Inches\nArm Length: 11 Inches\nTrouser Length: 38 Inches\nTrouser Waist: 20 Inches\nTrouser Hip: 24 Inches\nColor: Blue\nRose ?Embroidered With Lace Work Long Gown With Inner Trouser 3Pcs\nSize Measurement\nInner Chest 21/22\nInner Length 37\nInner Stuff Dull Silk\nTrouser Length 38\nStuff Dull Silk\nEmb Gown Chest 22\nGown Length 52/53\nGown Stuff Dull Silk\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+            {
+                title: "Black Chiffon Maxi Suit with Heavy Embroidery for Women",
+                category: "ladies-fashion",
+                price: "3,160",
+                oldPrice: "6,320",
+                discount: "-50%",
+                images: ["https://i.ibb.co/YBrW9RJc/MZ1689200623-ILFNPK-media-1.webp","https://i.ibb.co/YBrW9RJc/MZ1689200623-ILFNPK-media-1.webp","https://i.ibb.co/VcKWDmxx/MZ1689200623-ILFNPK-media-3.webp"],
+                description: "This stunning 3-piece stitched chiffon maxi suit is crafted for the modern Pakistani woman who demands both elegance and comfort. Perfect for Eid, weddings, or formal gatherings, its heavy embroidery and sleek black design make it a standout choice. The durable chiffon fabric ensures a graceful drape while remaining breathable for warm weather, making it ideal for both indoor and outdoor events. The suit features a round-neck maxi with a flared silhouette, paired with matching trousers and a four-side embroidered dupatta. The intricate floral and geometric embroidery is meticulously stitched along the hem and borders, adding a touch of traditional charm. The chiffon material is lightweight yet strong, ensuring the outfit stays in pristine condition even after multiple wears. The design is both stylish and practical, offering a flattering fit that enhances your natural curves. - Premium Quality Chiffon Fabric for a Luxurious Feel - Heavy Embroidery with Gold and White Accents for Elegance - Includes 1 Maxi, 1 Trouser, and 1 Dupatta for Complete Look - Flare Length of 100 Inches for a Dramatic, Flowing Silhouette - Perfect for Eid, Weddings, and Other Festive Occasions - Best Price in Pakistan for This Stylish and Durable Design",
+                overview: "Highlights\n\nFabric: Chiffon\nPattern: Embroidered\nNeck Type: Round Neck\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Maxi, 1 x Trouser, 1 x Dupatta\nFlare Length: 100 Inches\nShirt Length: 51 Inches\nShirt Chest: 20 Inches\nShirt Shoulder: 15 Inches\nArm Length: 11 Inches\nTrouser Length: 38 Inches\nTrouser Waist: 20 Inches\nTrouser Hip: 23 Inches\nDupatta Dimensions: 2.5 Yards\nColor: Black\nSize Mesurement\nChest Size 20\nMaxi Length 52\nMaxi Ghair 100+\nMaxi Stuff Chiffon\nTrouser Length 37\nStuff Malai Crepe\nFour Side Emb Dupatta\nSize 2.5 Yards\nStuff Chiffon\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+                        {
+                title: "Brown Lawn Embroidered 3Pcs Summer Suit",
+                category: "ladies-fashion",
+                price: "4,240",
+                oldPrice: "5,500",
+                discount: "-36%",
+                images: ["https://i.ibb.co/7xykkRND/MZ2078200158-MRBGSE-media-1.webp","https://i.ibb.co/t0D3MKh/MZ2078200158-MRBGSE-media-2.webp","https://i.ibb.co/DDQMG9Z7/MZ2078200158-MRBGSE-media-3.webp"],
+                description: "Highlights\n\nShirt Fabric: Lawn\nPattern: Embroidered\nShirt Front Pattern: Embroidered\nShirt Back Pattern: Plain\nTrouser Fabric: Lawn\nTrouser Pattern: Plain\nDupatta Fabric: Dobby Lawn",
+                overview: "Highlights\n\nShirt Fabric: Lawn\nPattern: Embroidered\nShirt Front Pattern: Embroidered\nShirt Back Pattern: Plain\nTrouser Fabric: Lawn\nTrouser Pattern: Plain\nDupatta Fabric: Dobby Lawn"
+            },
+            {
+                title: "Black Embroidered 3-Piece Suit with Beige Dupatta",
+                category: "ladies-fashion",
+                price: "3,336",
+                oldPrice: "4,500",
+                discount: "-37",
+                images: ["https://i.ibb.co/j9DZC0jj/MZ89000000123-RJFC-media-1.webp","https://i.ibb.co/FkSwNt5j/MZ89000000123-RJFC-media-2.webp"],
+                description: "This elegant 3-piece unstitched suit is crafted for the modern Pakistani woman who values both style and comfort. Perfect for weddings, office wear, or festive occasions, its sophisticated black embroidery and soft beige dupatta make it a timeless addition to your wardrobe. Designed with premium quality materials, this suit is durable enough to withstand daily wear while maintaining its luxurious look. The shirt features intricate patchwork embroidery on the front and neckline, with 3-D block printed sleeves that add a touch of modern flair. The matching trousers and dupatta are made from the same high-grade Dhanak fabric, ensuring comfort and durability. The embroidery is meticulously stitched to last, making this outfit ideal for both casual and formal events. The design is versatile, allowing you to pair it with heels or flats for any occasion. - Heavy 3-piece set: Shirt, Trouser, Dupatta - Premium Dhanak fabric for durability and comfort - Black base with elegant beige dupatta - Embroidered patchwork design on shirt front and neckline - 3-D block printed sleeves for modern appeal - Perfect for weddings, office, or festive gatherings New Arrival. Best price in Pakistan. Stylish. Durable. Premium Quality.",
+                overview: "Shirt Fabric: Dhanak\nPattern: Embroidered\nShirt Front Pattern: Patch Work\nNeckline: Patch Work\nSleeves Pattern: 3-D Block Printed\nDaman: Embroidered\nShirt Back Pattern: Plain\nTrouser Fabric: Dhanak\nTrouser Pattern: Plain\nDupatta Fabric: Dhanak\nDupatta Pattern: Embroidered\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser, 1 x Dupatta\nShirt Cutting: 3.25 Yards\nTrouser Cutting: 2.5 Yards\nDupatta Cutting: 2.5 Yards\nColor: Black\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects"
+            },
+            {
+                title: "Qaswa 3Pcs Embroidered Lawn Suit Blue Black",
+                category: "ladies-fashion",
+                price: "4,416",
+                oldPrice: "5,500",
+                discount: "-26%",
+                images: ["https://i.ibb.co/k6KB9CT1/MZ1914200158-MCCNOL-media-1.webp","https://i.ibb.co/KzNdpWmv/MZ1914200158-MCCNOL-media-2.webp"],
+                description: "Shirt Fabric: Lawn\nPattern: Embroidered\nShirt Front Pattern: Embroidered\nSleeves Pattern: Embroidered\nTrouser Fabric: Lawn\nTrouser Pattern: Plain\nDupatta Fabric: Lawn\nDupatta Pattern: Plain\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser, 1 x Dupatta\nShirt Cutting: 3 Meter\nTrouser Cutting: 2.5 Gazz\nDupatta Cutting: 2.5 Gazz\nColor: Multicolor\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects.",
+                overview: "Shirt Fabric: Lawn\nPattern: Embroidered\nShirt Front Pattern: Embroidered\nSleeves Pattern: Embroidered\nTrouser Fabric: Lawn\nTrouser Pattern: Plain\nDupatta Fabric: Lawn\nDupatta Pattern: Plain\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser, 1 x Dupatta\nShirt Cutting: 3 Meter\nTrouser Cutting: 2.5 Gazz\nDupatta Cutting: 2.5 Gazz\nColor: Multicolor\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+            {
+                title: "Blue Printed Cotton Lawn 2Pcs Co-ord Set",
+                category: "ladies-fashion",
+                price: "2,796",
+                oldPrice: "3,500",
+                discount: "-28%",
+                images: ["https://i.ibb.co/7thP38HY/MZ28900000461-KKDR-media-1.webp","https://i.ibb.co/Pz6hbpfY/MZ28900000461-KKDR-media-2.webp","https://i.ibb.co/4wsyHJTh/MZ28900000461-KKDR-media-3.webp"],
+                description: "Size medium",
+                overview: "Fabric: Cotton Lawn\nPattern: Printed\nTrouser Fabric: Cotton Lawn\nNumber Of Pieces: 2 Pcs\nPackage Includes: 5 x Co-ord Set\nColor: Blue\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+            {
+                title: "3 Pcs Women's Stitched Cotton Embroidered Suit",
+                category: "ladies-fashion",
+                price: "3820",
+                oldPrice: "4,500",
+                discount: "-31%",
+                images: ["https://i.ibb.co/KxTcgb6F/MZ2625200007-MOHIB-media-1.webp","https://i.ibb.co/DfXnMvsk/MZ2625200007-MOHIB-media-2.webp","https://i.ibb.co/gZBCPnn8/MZ2625200007-MOHIB-media-3.webp","https://i.ibb.co/LDVynWFb/MZ2625200007-MOHIB-media-4.webp","https://i.ibb.co/SXNdqYZ1/MZ2625200007-MOHIB-media-5.webp","https://i.ibb.co/k6rLRM3k/MZ2625200007-MOHIB-media-6.webp","https://i.ibb.co/Pvn2Xqzy/MZ2625200007-MOHIB-media-7.webp","https://i.ibb.co/wNGGf4gd/MZ2625200007-MOHIB-media-8.webp"],
+                description: "Front Sleeves Border All'over Heavy Sequence Work Shirt And Bottom Sequence Embroidery Trouser With Plain Duppatta Seperate Tassels 3Pcs",
+                overview: "Highlights\n\nFabric: Cotton\nPattern: Embroidered\nNeck Type: Round Neck\nGown Pattern: Embroidered\nTrouser Fabric: Cotton\nTrouser Pattern: Embroidered\nDupatta Fabric: Chiffon\nDupatta Pattern: Embroidered\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser, 1 x Dupatta\nShirt Length: 38 Inches\nShirt Chest: 22 Inches\nShirt Shoulder: 15 Inches\nArm Length: 11 Inches\nTrouser Length: 38 Inches\nTrouser Waist: 20 Inches\nTrouser Hip: 24 Inches\nDupatta Dimensions: 2.5 Yards\nColor: Maroon\nSize Measurement\nChest Size 21/22\nShirt Length 37/38\nShirt Stuff Bareeza Cotton\nBottom Sequence Embroidery Trouser Length 37/38\nStuff Bareeza Cotton\nPlain Duppatta\nSize 2.5 Yards\nStuff : Chiffon\nWith Packing Seperate Tassels\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects"
+            },
+                        {
+                title: "Keratin Hair Mask 50ml for All Hair Types - Frizz Control & Repair",
+                category: "beauty",
+                price: "560",
+                oldPrice: "700",
+                discount: "-20%",
+                images: ["https://i.ibb.co/LhHqbw0v/MZ1533200193-SGSE-media-1.webp","https://i.ibb.co/nMqZC7PT/MZ1533200193-SGSE-media-2.webp","https://i.ibb.co/gb9TPB7M/MZ1533200193-SGSE-media-3.webp"],
+                description: "This professional-grade Keratin Hair Mask is specially formulated to deeply repair, nourish, and restore damaged or coarse hair. Enriched with natural plant essences, it penetrates deep into the hair cortex to strengthen strands from within while maintaining a balanced, healthy scalp for soft, smooth, and frizz-free hair.",
+                overview: "Highlights\n\nMaterial: Cream\nHair Types: All Hair Types\nProduct Feature: Anti-Dandruff, Damaged Hair, Frizz Control, Dry And Damaged, Nourish, Scalp Cleansing, Volume, Shine\nPackage Includes: 1 x Hair Mask\nKeratin Repair: Deeply nourishes and rebuilds dry, damaged, and coarse hair.\n• Scalp Balance: Promotes a clean, balanced, and healthy scalp environment.\n• Natural Essence: Infused with high-quality plant extracts for natural shine and softness.\n• Frizz Control: Instantly tames flyaways and improves hair texture and manageability.\n• Quick Results: Fast-absorbing formula that delivers a smooth, salon-like finish at home.\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+                        {
+                title: "Keratin & Collagen Hair Mask Pack of 2",
+                category: "beauty",
+                price: "897",
+                oldPrice: "1,000",
+                discount: "-12%",
+                images: ["https://i.ibb.co/XrqcMXqD/MZ22100000086-MSEE-media-1.jpg","https://i.ibb.co/6C4wxfR/MZ22100000086-MSEE-media-2.jpg","https://i.ibb.co/r2Rv4M0j/MZ22100000086-MSEE-media-3.jpg","https://i.ibb.co/b5fSLqwp/MZ22100000086-MSEE-media-4.jpg"],
+                description: "Revitalize your hair with this powerful Keratin Hair Mask and Collagen duo—perfect for Pakistani weather and daily styling. Whether you’re battling dryness or damage, this treatment delivers deep nourishment that restores shine and strength without weighing hair down. Made with premium quality ingredients, this cream-based formula is designed to repair split ends, strengthen strands, and promote a healthy scalp. The smooth texture glides on easily, absorbing fast to leave hair soft and manageable. Durable enough for daily use, it’s ideal for all hair types including naturally curly or chemically treated locks. The white packaging ensures freshness and hygiene, while the 500ml volume gives you twice the value with the pack of two. - Nourishes and repairs damaged hair with keratin and collagen - Smooth cream texture absorbs quickly without greasiness - Suitable for all hair types including natural, colored, or chemically treated hair - Pack of two for best price in Pakistan—save on your hair care routine - Durable formula designed for daily use and long-term results - Ideal for home use or salon-like results without the salon cost",
+                overview: "Highlights\n\nMaterial: Cream\nTexture: Smooth\nHair Types: All Hair Types\nColor: White\nProduct Feature: Nourish, Repair, Healthy Scalp\nPackage Includes: 1 x Keratin Hair Mask, 1 x Karseell Collagen\nVolume: 500 ml\nWeight: 0.5 kg\nNote: Before using any new cosmetic product, perform a patch test on a small skin area. Verify ingredients for allergies and follow package warnings and directions."
+            },
+            {
+                title: "Black Digital Print Lawn 3Pcs Set with Chiffon Dupatta",
+                category: "ladies-fashion",
+                price: "2,220",
+                oldPrice: "2,850",
+                discount: "-28%",
+                images: ["https://i.ibb.co/gLv64mbg/MZ2381200112-MBASWE-media-1.webp","https://i.ibb.co/GQLksSMV/MZ2381200112-MBASWE-media-2.webp","https://i.ibb.co/G479JYP2/MZ2381200112-MBASWE-media-3.webp","https://i.ibb.co/gLv64mbg/MZ2381200112-MBASWE-media-1.webp"],
+                description: "",
+                overview: "Highlights\n\nFabric: Lawn\nPattern: Digital Print\nNeck Type: Round Neck\nShirt Pattern: Digital Print\nGown Pattern: Printed\nTrouser Fabric: Lawn\nTrouser Pattern: Printed\nDupatta Fabric: Chiffon\nDupatta Pattern: Plain\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser, 1 x Dupatta\nGown Length: 37 Inches\nGown Chest: 21 Inches\nGown Shoulder: 16 Inches\nShirt Length: 37 Inches\nShirt Chest: 21 Inches\nShirt Shoulder: 16 Inches\nArm Length: 19 Inches\nTrouser Length: 37 Inches\nTrouser Waist: 42 Inches\nTrouser Hip: 44 Inches\nDupatta Dimensions: 2.25 Gazz\nColor: Multicolor\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects"
+            },
+            {
+                title: "Women's Blue Long Sleeve Gown Dress Set",
+                category: "ladies-fashion",
+                price: "2,500",
+                oldPrice: "4,000",
+                discount: "-48",
+                images: ["https://i.ibb.co/YGFBx2V/MZ71000022-ALJTC-media-1.jpg","https://i.ibb.co/tw3YYm0M/MZ71000022-ALJTC-media-2.jpg","https://i.ibb.co/n8g6611F/MZ71000022-ALJTC-media-3.jpg","https://i.ibb.co/tw3YYm0M/MZ71000022-ALJTC-media-2.jpg"],
+                description: "Elevate Your Wardrobe With Our 3 Piece Women's Stitched Collection",
+                overview: "Fabric: Chiffon\nProduct Type: Maxi Suit\nPattern: Plain\nNeck Type: Round Neck\nAvailable Sizes: Standard\nShirt (Chest 21, Length 50), Trouser (Length 37) ,Dupatta: 2.25 Gazz\nPackage Includes: 1 x Maxi, 1 x Trouser, 1 x Dupatta\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects."
+            },
+            {
+                title: "3 Pcs Women's Stitched Silk Lace Work Suit",
+                category: "ladies-fashion",
+                price: "3,500",
+                oldPrice: "6,000",
+                discount: "-48",
+                images: ["https://i.ibb.co/fz24C1s9/MZ2625200030-MOHIB-media-1.webp","https://i.ibb.co/LX85khpH/MZ2625200030-MOHIB-media-2.webp","https://i.ibb.co/9HRFn3gX/MZ2625200030-MOHIB-media-3.webp","https://i.ibb.co/fz24C1s9/MZ2625200030-MOHIB-media-1.webp"],
+                description: "Most Demanded Arrival ? Elegance For Festival And Formal Occasions ? Long Flare Sharara And Long Sleeves Dori Finger Shirt With Lace Work Dupatta 3Pcs",
+                overview: "Highlights\n\nFabric: Silk\nPattern: Lace Work\nNeck Type: Round Neck\nShirt Pattern: Plain\nTrouser Fabric: Silk\nTrouser Pattern: Plain\nDupatta Fabric: Organza\nDupatta Pattern: Plain\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Dupatta, 1 x Trouser\nShirt Length: 36 Inches\nShirt Chest: 20 Inches\nShirt Shoulder: 15 Inches\nArm Length: 11 Inches\nTrouser Length: 39 Inches\nTrouser Waist: 20 Inches\nTrouser Hip: 24 Inches\nDupatta Dimensions: 2.5 Yards\nColor: Ivory\nSize Measurements\nChest Size 20/21\nShirt Length 36/37\nShirt Stuff China Silk\nSharara Length 39/40\nSharara Stuff China Silk\nSharara Flare 100 Around\nLace Work Dupatta\nSize 2.5 Yards\nStuff Organza\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects.\nProduct Code: MZ2625200030MOHIB"
+            },
+            {
+                title: "3 Pcs Women's Stitched Silk Lace Work Suit Ladies suit",
+                category: "ladies-fashion",
+                price: "3,500",
+                oldPrice: "6,000",
+                discount: "-48",
+                images: ["https://i.ibb.co/Xrs9sJWH/MZ2625200032-MOHIB-media-1.webp","https://i.ibb.co/WvzBLdCp/MZ2625200032-MOHIB-media-5.webp","https://i.ibb.co/HDBxK9tV/MZ2625200032-MOHIB-media-3.webp","https://i.ibb.co/FkV5GPmt/MZ2625200032-MOHIB-media-4.webp"],
+                description: "Most Demanded Arrival ? Elegance For Festival And Formal Occasions ? Long Flare Sharara And Long Sleeves Dori Finger Shirt With Lace Work Dupatta 3Pcs",
+                overview: "Fabric: Silk\nPattern: Lace Work\nNeck Type: Round Neck\nShirt Pattern: Plain\nTrouser Fabric: Silk\nTrouser Pattern: Plain\nDupatta Fabric: Organza\nDupatta Pattern: Plain\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Dupatta, 1 x Trouser\nShirt Length: 36 Inches\nShirt Chest: 20 Inches\nShirt Shoulder: 15 Inches\nArm Length: 11 Inches\nTrouser Length: 39 Inches\nTrouser Waist: 20 Inches\nTrouser Hip: 24 Inches\nDupatta Dimensions: 2.5 Yards\nColor: Black\nSize Measurements\nChest Size 20/21\nShirt Length 36/37\nShirt Stuff China Silk\nSharara Length 39/40\nSharara Stuff China Silk\nSharara Flare 100 Around\nLace Work Dupatta\nSize 2.5 Yards\nStuff Organza\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects.\nProduct Code: MZ2625200032MOHIB"
+            },
+            {
+                title: "Black Shamoz Silk 3-Piece Suit with Rose Embroidery",
+                category: "ladies-fashion",
+                price: "3,159",
+                oldPrice: "4,500",
+                discount: "-28%",
+                images: ["https://i.ibb.co/N2pjQzSC/MZ1689200458-ILFNPK-media-1.jpg","https://i.ibb.co/N2pjQzSC/MZ1689200458-ILFNPK-media-1.jpg","https://i.ibb.co/Y7MKMrPM/MZ1689200458-ILFNPK-media-3.jpg","https://i.ibb.co/N2pjQzSC/MZ1689200458-ILFNPK-media-1.jpg"],
+                description: "This elegant 3-piece suit is perfect for any formal occasion or festive gathering in Pakistan. The black Shamoz Silk fabric offers a luxurious feel while remaining comfortable for daily wear, making it ideal for both office settings and weddings. The rose embroidery adds a touch of sophistication and timeless beauty, ensuring you stand out in any crowd. Designed with durability in mind, this outfit is crafted to last through multiple events without losing its shape or color. The shirt features a round neck and long sleeves, while the matching trousers provide a sleek silhouette. The embroidered dupatta, made from lightweight organza, adds grace and movement. The premium quality stitching ensures that every detail remains intact, even after repeated use. This stylish ensemble is a new arrival that combines traditional design with modern comfort, making it a smart investment for your wardrobe. - Made from premium Shamoz Silk for a luxurious drape and feel - Embroidered rose pattern adds elegance and visual appeal - Includes a matching organza dupatta for added grace - Durable stitching ensures long-lasting wear - Perfect for formal events, weddings, or office wear - New arrival with best price in Pakistan for exceptional value",
+                overview: "Highlights\n\nFabric: Shamoz Silk\nPattern: Embroidered\nNeck Type: Round Neck\nShirt Pattern: Embroidered\nTrouser Fabric: Shamoz Silk\nTrouser Pattern: Plain\nDupatta Fabric: Organza\nDupatta Pattern: Embroidered\nAvailable Sizes: Standard Size\nNumber Of Pieces: 3 Pcs\nPackage Includes: 1 x Shirt, 1 x Trouser, 1 x Dupatta\nShirt Length: 38 Inches\nShirt Chest: 21 Inches\nShirt Shoulder: 15 Inches\nArm Length: 11 Inches\nTrouser Length: 38 Inches\nTrouser Waist: 20 Inches\nTrouser Hip: 23 Inches\nDupatta Dimensions: 2.5 Yards\nColor: Black\nChest Size 21\nShirt Length 37 / 38\nShirt Stuff Shamose Silk\nTrouser Length 37 / 38\nStuff Shamose Silk\nEmb Dupatta\nSize 2.5 Yards\nStuff Organza\nNote: There might be an error of 1-3 cm due to manual measurement, and slight color differences may occur as a result of varying lighting and monitor effects.\nProduct Code: MZ1689200458ILFNPK"
+            },
+            {
+                id: 1,
+                title: "Women Katan Silk Printed Maxi Suit Set 3 Piece Regular",
+                category: "ladies-fashion",
+                price: "1,924",
+                oldPrice: "2,499",
+                discount: "-36%",
+                images: ["https://i.postimg.cc/zvZqgdG1/MZ71000001ALJTC-media-1.jpg", "https://i.postimg.cc/mkfTHdgQ/MZ71000001ALJTC-media-2.jpg", "https://i.postimg.cc/rsXqrhw5/MZ71000001ALJTC-media-3.jpg"],
+                description: "Premium Silk Maxi Outfit.",
+                overview: "• Fabric: Katan Silk\n• Color: Beautiful Print\n• Standard Fit"
+            },
+            {
+                id: 2,
+                title: "Navy Gold Fleece Track Suit for Men Winter Slim Fit",
+                category: "men-fashion",
+                price: "1,690",
+                oldPrice: "3,000",
+                discount: "-48%",
+                images: ["https://i.postimg.cc/HxwNtTp5/MZ1009200116RN-media-1.webp", "https://i.postimg.cc/W3Gy7s2G/MZ1009200116RN-media-2.webp", "https://i.postimg.cc/pTfSBP2B/MZ1009200116RN-media-3.webp"],
+                description: "ISME SMALL & X-LARGE SIZE AVAIBLE HY SIZE WHATSAPP PR ZARUR BATAY",
+                overview: "• Gender: Men's \n• Fabric: Fleece \n• Sizes: Small, Medium, Large"
+            },
+            {
+                id: 3,
+                title: "Audi Logo Track Suit Black Slim Fit 2-Piece Set for Men",
+                category: "men-fashion",
+                price: "1,690",
+                oldPrice: "3000",
+                discount: "-48%",
+                images: ["https://i.postimg.cc/VL8CTmzS/MZ1009200153RN-media-1.webp", "https://i.postimg.cc/qMT3Y4py/MZ1009200153RN-media-2.webp"],
+                description: "Premium stretchable summer suit.",
+                overview: "• Fabric: Cotton\n• Design: Audi Logo Printed"
+            },
+            {
+                id: 4,
+                title: "Maroon Embroidered 3-Piece Suit for Women",
+                category: "ladies-fashion",
+                price: "3,300",
+                oldPrice: "4,500",
+                discount: "-28%",
+                images: ["https://i.postimg.cc/wBfrfwJz/MZ2199200260BICN-media-1.webp", "https://i.postimg.cc/JnS2mtPq/MZ2199200260BICN-media-2.webp"],
+                description: "Traditional maroon embroidery work dress.",
+                overview: "• Fabric: Organza & Malai\n• Number of Pieces: 3 Pcs"
+            }
+        ];
+
+        const CATEGORIES = [
+            { id: "all", name: "All Categories", icon: "fa-grip" },
+            { id: "electronic", name: "Electronic Devices", icon: "fa-desktop" },
+            { id: "accessories", name: "Accessories", icon: "fa-headphones" },
+            { id: "beauty", name: "Beauty", icon: "fa-wand-magic-sparkles" },
+            { id: "men-fashion", name: "Men's Fashion", icon: "fa-shirt" },
+            { id: "ladies-fashion", name: "Ladies' Fashion", icon: "fa-person-dress" }
+        ];
+
+        let selectedCategory = "all"; let activeProduct = null; let selectedLabel = "Home";
+
+        function renderCategories() {
+            const dBox = document.getElementById("desktopCats"); const mBox = document.getElementById("mobileCats");
+            dBox.innerHTML = ""; mBox.innerHTML = "";
+            CATEGORIES.forEach(cat => {
+                const dDiv = document.createElement("div"); dDiv.className = cat.id === selectedCategory ? "active" : ""; dDiv.innerHTML = `<i class="fa-solid ${cat.icon}"></i> ${cat.name}`; dDiv.onclick = () => filterCategory(cat.id); dBox.appendChild(dDiv);
+                const mDiv = document.createElement("div"); mDiv.className = `mobile-cat-item ${cat.id === selectedCategory ? 'active' : ''}`; mDiv.innerHTML = `<div class="circle-icon"><i class="fa-solid ${cat.icon}"></i></div><span>${cat.name.split(' ')[0]}</span>`; mDiv.onclick = () => filterCategory(cat.id); mBox.appendChild(mDiv);
+            });
+        }
+
+        function renderProducts(productsToRender) {
+            const container = document.getElementById("productsContainer"); container.innerHTML = "";
+            productsToRender.forEach(prod => {
+                const card = document.createElement("div"); card.className = "product-card"; card.onclick = () => openProductDetails(prod);
+                card.innerHTML = `<div class="img-wrapper"><img src="${prod.images[0]}"></div><div class="product-title">${prod.title}</div><div class="price-container"><span class="product-price">Rs. ${prod.price}</span><div class="old-price-row"><span class="old-price">Rs. ${prod.oldPrice}</span><span class="discount-tag">${prod.discount}</span></div></div>`;
+                container.appendChild(card);
+            });
+        }
+
+        function loadSavedAddressDetails() {
+            if(localStorage.getItem("custName")) document.getElementById("custName").value = localStorage.getItem("custName");
+            if(localStorage.getItem("custPhone")) document.getElementById("custPhone").value = localStorage.getItem("custPhone");
+            if(localStorage.getItem("custProvince")) document.getElementById("custProvince").value = localStorage.getItem("custProvince");
+            if(localStorage.getItem("custCity")) document.getElementById("custCity").value = localStorage.getItem("custCity");
+            if(localStorage.getItem("custAddress")) document.getElementById("custAddress").value = localStorage.getItem("custAddress");
+            if(localStorage.getItem("selectedLabel")) selectAddressLabel(localStorage.getItem("selectedLabel"));
+        }
+
+        function setupAddressAutoSave() {
+            const fields = ["custName", "custPhone", "custProvince", "custCity", "custAddress"];
+            fields.forEach(fieldId => {
+                document.getElementById(fieldId).addEventListener("input", function() {
+                    localStorage.setItem(fieldId, this.value);
+                });
+            });
+        }
+
+        function openProductDetails(product) {
+            activeProduct = product;
+            document.getElementById("modalTitle").innerText = product.title;
+            document.getElementById("modalPrice").innerText = `Rs. ${product.price}`;
+            document.getElementById("modalOldPrice").innerText = `Rs. ${product.oldPrice}`;
+            document.getElementById("modalDiscount").innerText = product.discount;
+            document.getElementById("modalDesc").innerText = product.description;
+            document.getElementById("modalOverview").innerText = product.overview || "";
+
+            const sliderBox = document.getElementById("modalSliderBox"); sliderBox.innerHTML = "";
+            product.images.forEach(img => { sliderBox.innerHTML += `<div class="modal-slide-item"><img src="${img}"></div>`; });
+            document.getElementById("imageIndexLabel").innerText = `1 / ${product.images.length}`;
+
+            const tg = document.getElementById("modalThumbGallery"); tg.innerHTML = "";
+            if(product.images.length > 1) {
+                tg.style.display = "flex";
+                product.images.forEach((img, idx) => {
+                    tg.innerHTML += `<div class="thumb-item ${idx===0?'active':''}" id="modal-thumb-${idx}" onclick="document.getElementById('modalSliderBox').scrollTo({left: document.getElementById('modalSliderBox').clientWidth * ${idx}, behavior: 'smooth'}); updateActiveThumbnail(${idx});"><img src="${img}"></div>`;
+                });
+            } else { tg.style.display = "none"; }
+
+            sliderBox.onscroll = function() {
+                const w = sliderBox.clientWidth; if(w === 0) return;
+                const idx = Math.round(sliderBox.scrollLeft / w);
+                document.getElementById("imageIndexLabel").innerText = `${idx + 1} / ${product.images.length}`;
+                updateActiveThumbnail(idx);
+            };
+
+            loadSavedAddressDetails();
+            document.getElementById("productModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
+            sliderBox.scrollLeft = 0;
+        }
+
+        function updateActiveThumbnail(idx) {
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+            const th = document.getElementById(`modal-thumb-${idx}`); if(th) th.classList.add('active');
+        }
+
+        function selectAddressLabel(lbl) {
+            selectedLabel = lbl; localStorage.setItem("selectedLabel", lbl);
+            document.getElementById("chipHome").classList.remove("selected"); document.getElementById("chipOffice").classList.remove("selected");
+            if(lbl === 'Home') document.getElementById("chipHome").classList.add("selected"); else document.getElementById("chipOffice").classList.add("selected");
+        }
+
+        function closeModal() { document.getElementById("productModal").style.display = "none"; document.body.style.overflow = "auto"; }
+        document.getElementById("closeModalBtn").onclick = closeModal;
+
+        document.getElementById("checkoutForm").onsubmit = function(e) {
+            e.preventDefault();
+            const productImageLink = (activeProduct.images && activeProduct.images.length > 0) ? activeProduct.images[0] : "";
+            const textBill = `📦 *NEW ORDER - HAMVIRO*\n\n` +
+                             `⚙️ *PRODUCT:* ${activeProduct.title}\n` +
+                             `• *Price:* Rs. ${activeProduct.price}\n` +
+                             `• *Product Image:* ${productImageLink}\n\n` +
+                             `🚚 *DELIVERY ADDRESS:*\n` +
+                             `• *Name:* ${document.getElementById("custName").value}\n` +
+                             `• *Phone:* ${document.getElementById("custPhone").value}\n` +
+                             `• *Address:* ${document.getElementById("custAddress").value}, ${document.getElementById("custCity").value} (${document.getElementById("custProvince").value})\n` +
+                             `• *Label:* ${selectedLabel}`;
+            window.open(`https://wa.me/${MY_BUSINESS_WHATSAPP}?text=${encodeURIComponent(textBill)}`, '_blank');
+        };
+
+        function filterCategory(catId) {
+            selectedCategory = catId; renderCategories();
+            if(catId === "all") renderProducts(PRODUCTS_DATA);
+            else renderProducts(PRODUCTS_DATA.filter(p => p.category === catId));
+        }
+
+        function executeSearch() {
+            const query = document.getElementById("searchInput").value.toLowerCase().trim();
+            if(query === "") { filterCategory("all"); return; }
+            renderProducts(PRODUCTS_DATA.filter(p => p.title.toLowerCase().includes(query)));
+        }
+
+        document.getElementById("searchBtn").onclick = executeSearch;
+        document.getElementById("searchInput").onkeyup = (e) => { if(e.key === "Enter") executeSearch(); };
+        document.getElementById("brandLogo").onclick = () => { filterCategory("all"); document.getElementById("searchInput").value=""; };
+        document.getElementById("homeTab").onclick = () => { filterCategory("all"); document.getElementById("searchInput").value=""; };
+        document.getElementById("bannerBtn").onclick = () => { window.scrollTo({top: document.getElementById("productsContainer").offsetTop - 100, behavior: "smooth"}); };
+
+        window.onload = () => { renderCategories(); renderProducts(PRODUCTS_DATA); setupAddressAutoSave(); loadSavedAddressDetails(); };
+    </script>
+</body>
+</html>
